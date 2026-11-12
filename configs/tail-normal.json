@@ -1,0 +1,16 @@
+{
+  "u": 10,
+  "run_length": 3,
+  "min_segment_days": 30,
+  "sigma_bounds": [0.5, 200],
+  "xi_bounds": [-0.6, 0.8],
+  "return_periods": [10, 20, 50, 100],
+  "sensitivity": [
+    {"u": 8, "run_length": 3},
+    {"u": 12, "run_length": 3},
+    {"u": 20, "run_length": 3},
+    {"u": 10, "run_length": 1},
+    {"u": 10, "run_length": 5},
+    {"u": 10, "run_length": 7}
+  ]
+}

@@ -12,4 +12,12 @@ python -m climate_data.cli inspect data/normal.json
 
 `inspect`显示当前原始摘要，不覆盖资料。`invalid-`前缀文件为不合法资料，其他变体使用相同字段保留业务边界。来源字节SHA-256随摘要输出，后续结果应同时标明输入身份、量纲和适用范围。
 
+`tail`运行超阈值尾部分析：runs法去簇（含边界簇排除）、GPD多起点矩形约束拟合与KKT诊断、Poisson簇重现水平及往返检查，并对一组(u,run_length)做敏感性重算，全部结果写入单个JSON报告：
+
+```sh
+python -m climate_data.cli tail data/normal.json configs/tail-normal.json
+```
+
+分析配置（阈值、run_length、最短完整段长度、GPD矩形边界、重现期、敏感性组）在分析前给定，示例见`configs/tail-normal.json`；方法与输出字段见[尾部分析说明](docs/tail-analysis.md)。
+
 容器使用固定基础镜像，可运行`docker build -t climate-material .`，随后`docker run --rm climate-material`检查资料。`docker run --rm climate-material python -m unittest discover -s tests -v`执行已有检查。运行不依赖远端账号或实时服务。
